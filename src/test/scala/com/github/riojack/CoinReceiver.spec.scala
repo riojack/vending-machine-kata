@@ -11,6 +11,5 @@ class CoinReceiverTest extends FlatSpec with Matchers {
     val nextCoinReceiver = coinReceiver.putCoin(coin)
 
     nextCoinReceiver.coins.size should be (0)
-
   }
 }
