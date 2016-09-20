@@ -30,4 +30,13 @@ class CoinReceiverTest extends FlatSpec with Matchers {
 
     nextCoinReceiver should equal(CoinReceiver(dimes = 1))
   }
+
+  "A Coin Receiver" should "accept a coin with a weight of 5.670 and a diameter of 24.26" in {
+    val coinReceiver = CoinReceiver()
+    val coin = Coin(5.670, 24.26)
+
+    val nextCoinReceiver = coinReceiver.putCoin(coin)
+
+    nextCoinReceiver should equal(CoinReceiver(quarters = 1))
+  }
 }
