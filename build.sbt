@@ -1,1 +1,5 @@
-libraryDependencies += "org.scalatest" % "scalatest_2.12.0-RC1" % "3.0.0"
+libraryDependencies += "org.scalatest" % "scalatest_2.11" % "3.0.0"
+
+resolvers += Resolver.sonatypeRepo("public")
+
+scalaVersion := "2.11.8"
