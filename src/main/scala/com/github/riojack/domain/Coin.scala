@@ -1,3 +1,3 @@
 package com.github.riojack.domain
 
-case class Coin(weight: Int = 0, diameter: Int = 0)
+case class Coin(weight: Double = 0.0, diameter: Double = 0.0)
