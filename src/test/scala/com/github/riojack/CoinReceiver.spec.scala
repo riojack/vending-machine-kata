@@ -4,7 +4,7 @@ import com.github.riojack.domain.Coin
 import org.scalatest._
 
 class CoinReceiverTest extends FlatSpec with Matchers {
-  "A Coin Receiver" should "reject a weightless, diameterless coin" in {
+  "A Coin Receiver" should "reject a coin with zero weight and zero diameter" in {
     val coinReceiver = CoinReceiver()
     val coin = Coin()
 
@@ -22,7 +22,7 @@ class CoinReceiverTest extends FlatSpec with Matchers {
     nextCoinReceiver should equal(CoinReceiver(nickels = 1))
   }
 
-  "A Coin Receiver" should "accept a coin with a weight of 2.268 and a diameter of 17.91" in {
+  "A Coin Receiver" should "accept a coin with a weight of 2.268 and a diameter of 17.91 (dime)" in {
     val coinReceiver = CoinReceiver()
     val coin = Coin(2.268, 17.91)
 
@@ -31,7 +31,7 @@ class CoinReceiverTest extends FlatSpec with Matchers {
     nextCoinReceiver should equal(CoinReceiver(dimes = 1))
   }
 
-  "A Coin Receiver" should "accept a coin with a weight of 5.670 and a diameter of 24.26" in {
+  "A Coin Receiver" should "accept a coin with a weight of 5.670 and a diameter of 24.26 (quarter)" in {
     val coinReceiver = CoinReceiver()
     val coin = Coin(5.670, 24.26)
 
