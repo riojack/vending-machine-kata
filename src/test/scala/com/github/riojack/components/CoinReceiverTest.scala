@@ -54,4 +54,10 @@ class CoinReceiverTest extends FlatSpec with Matchers {
 
     nextCoinReceiver should equal(CoinReceiver(pennies = 0, nickels = 1, dimes = 2, quarters = 1))
   }
+
+  it should "retain prior nickel, dime, and quarter counts when a penny is rejected" in {
+    val nextCoinReceiver = CoinReceiver() putCoin Dime putCoin Dime putCoin Quarter putCoin Nickel putCoin Penny
+
+    nextCoinReceiver should equal(CoinReceiver(pennies = 0, nickels = 1, dimes = 2, quarters = 1))
+  }
 }
