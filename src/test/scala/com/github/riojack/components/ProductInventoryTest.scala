@@ -23,4 +23,10 @@ class ProductInventoryTest extends FlatSpec with Matchers {
 
     nextInventory should equal(new ProductInventory(chips = 1))
   }
+
+  it should "accept Candy and increment its candy inventory count by one" in {
+    val nextInventory = ProductInventory().add(Candy)
+
+    nextInventory should equal(new ProductInventory(candy = 1))
+  }
 }
