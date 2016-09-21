@@ -7,7 +7,7 @@ import scala.language.postfixOps
 import scala.util.Random._
 
 class ProductDispenserTest extends FlatSpec with Matchers {
-  "A Product Dispenser" should """dispense cola when "cola" is asked from it""" in {
+  "A Product Dispenser" should """dispense cola when "cola" is selected""" in {
     val productName = "cola"
 
     ProductDispenser.dispense(productName) should equal(Cola)
