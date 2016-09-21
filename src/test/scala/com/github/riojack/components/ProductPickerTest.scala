@@ -4,6 +4,7 @@ import org.scalatest._
 
 import scala.language.postfixOps
 import scala.util.Random._
+import com.github.riojack.domain._
 
 class ProductPickerTest extends FlatSpec with Matchers with BeforeAndAfter {
   "A Product Picker" should "return nothing if there is no inventory regardless of the product" in {
@@ -24,5 +25,14 @@ class ProductPickerTest extends FlatSpec with Matchers with BeforeAndAfter {
     val product = picker.giveMe(productName)
 
     product should be(None)
+  }
+
+  it should "return cola if the inventory has one or more colas" in {
+    implicit val inventory = ProductInventory(cola = 1 + nextInt(10))
+    val picker = new ProductPicker()
+
+    val product = picker.giveMe("cola")
+
+    product should be(Some(Cola))
   }
 }

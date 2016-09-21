@@ -1,5 +1,9 @@
 package com.github.riojack.components
 
-class ProductPicker {
-  def giveMe(productName: String): Option[Product] = None
+import com.github.riojack.domain._
+
+class ProductPicker(implicit inventory: ProductInventory) {
+  private lazy val dispenser = ProductDispenser
+
+  def giveMe(productName: String) = dispenser.dispense(productName)
 }
