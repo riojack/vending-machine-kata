@@ -39,6 +39,13 @@ class ProductInventoryTest extends FlatSpec with Matchers {
     loadedInventory should equal(new ProductInventory(cola = colaCount, chips = chipsCount, candy = candyCount))
   }
 
+  it should "reject adding unknown products by leaving inventory counts unchanged" in {
+    val expectedInventory = ProductInventory().add(Candy).add(Candy).add(Candy).add(Cola).add(Chips)
+    val actualInventory = expectedInventory.add(Product(alphanumeric.take(10).mkString, nextInt(200)))
+
+    actualInventory should equal(expectedInventory)
+  }
+
   private def loadInventory(chips: Int, cola: Int, candy: Int) = {
     val withChips = (1 to chips).foldLeft(new ProductInventory()) {
       (inventory: ProductInventory, _) =>
