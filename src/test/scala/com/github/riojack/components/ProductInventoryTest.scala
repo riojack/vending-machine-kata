@@ -91,6 +91,12 @@ class ProductInventoryTest extends FlatSpec with Matchers {
     fewerCandiesInventory should equal(new ProductInventory(chips = chipsCount, cola = colaCount, candy = candyCount - 1))
   }
 
+  it should "not allow any inventory count to fall under zero" in {
+    val nextInventory = ProductInventory().remove(Candy).remove(Chips).remove(Cola)
+
+    nextInventory should equal(right = new ProductInventory(cola = 0, chips = 0, candy = 0))
+  }
+
   private def loadInventory(chips: Int, cola: Int, candy: Int) = {
     val withChips = (1 to chips).foldLeft(new ProductInventory()) {
       (inventory: ProductInventory, _) =>

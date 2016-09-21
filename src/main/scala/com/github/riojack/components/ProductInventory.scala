@@ -11,9 +11,10 @@ case class ProductInventory(cola: Int = 0, chips: Int = 0, candy: Int = 0) {
   }
 
   def remove(product: Product): ProductInventory = product match {
-    case Chips => copy(chips = chips - 1)
-    case Candy => copy(candy = candy - 1)
-    case _ => copy(cola = cola - 1)
+    case Chips if chips - 1 >= 0 => copy(chips = chips - 1)
+    case Candy if candy - 1 >= 0 => copy(candy = candy - 1)
+    case Cola if cola - 1 >= 0 => copy(cola = cola - 1)
+    case _ => new ProductInventory()
   }
 }
 
