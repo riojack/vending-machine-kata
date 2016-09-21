@@ -6,7 +6,7 @@ import scala.language.postfixOps
 import scala.util.Random._
 
 class ProductPickerTest extends FlatSpec with Matchers with BeforeAndAfter {
-  "A Product Picker" should "should return nothing if there is no inventory" in {
+  "A Product Picker" should "return nothing if there is no inventory regardless of the product" in {
     implicit val inventory = ProductInventory()
     val picker = new ProductPicker()
 
