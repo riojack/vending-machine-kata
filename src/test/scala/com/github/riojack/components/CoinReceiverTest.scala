@@ -3,7 +3,7 @@ package com.github.riojack.components
 import com.github.riojack.domain._
 import org.scalatest._
 
-import scala.collection.immutable.IndexedSeq
+import scala.language.postfixOps
 import scala.util.Random._
 
 class CoinReceiverTest extends FlatSpec with Matchers {
@@ -70,7 +70,7 @@ class CoinReceiverTest extends FlatSpec with Matchers {
     nextCoinReceiver should equal(CoinReceiver(pennies = 0, nickels = 1, dimes = 2, quarters = 1))
   }
 
-  it should "return zero coins of zero coins were placed in it" in {
+  it should "return zero coins if zero coins were placed in it" in {
     val coins = CoinReceiver().returnCoins
 
     coins should equal(Seq())
