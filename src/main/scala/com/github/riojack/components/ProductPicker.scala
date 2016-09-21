@@ -11,6 +11,7 @@ class ProductPicker(startingInventory: ProductInventory) {
       inventory = inventory.remove(Cola)
       Some(Cola)
     }
+    case Some(Chips) => Some(Chips)
     case _ => None
   }
 }

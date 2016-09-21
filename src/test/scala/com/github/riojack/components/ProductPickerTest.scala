@@ -48,4 +48,13 @@ class ProductPickerTest extends FlatSpec with Matchers {
     product should be(None)
   }
 
+  it should "return chips if the inventory has one or more chips" in {
+    val inventory = ProductInventory(chips = 1 + nextInt(10))
+    val picker = new ProductPicker(inventory)
+
+    val product = picker.giveMe("chips")
+
+    product should be(Some(Chips))
+  }
+
 }
