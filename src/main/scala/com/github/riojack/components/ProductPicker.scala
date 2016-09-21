@@ -7,11 +7,12 @@ class ProductPicker(startingInventory: ProductInventory) {
   private var inventory = startingInventory
 
   def giveMe(productName: String) = dispenser.dispense(productName) match {
-    case Some(Cola) if inventory.cola > 0 => {
+    case Some(Cola) if inventory.cola > 0 =>
       inventory = inventory.remove(Cola)
       Some(Cola)
-    }
-    case Some(Chips) => Some(Chips)
+    case Some(Chips) if inventory.chips > 0 =>
+      inventory = inventory.remove(Chips)
+      Some(Chips)
     case _ => None
   }
 }
