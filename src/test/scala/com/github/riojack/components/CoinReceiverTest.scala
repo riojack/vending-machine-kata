@@ -3,6 +3,9 @@ package com.github.riojack.components
 import com.github.riojack.domain._
 import org.scalatest._
 
+import scala.collection.immutable.IndexedSeq
+import scala.util.Random._
+
 class CoinReceiverTest extends FlatSpec with Matchers {
   "A Coin Receiver" should "reject a coin with zero weight and zero diameter" in {
     val coinReceiver = CoinReceiver()
@@ -89,5 +92,25 @@ class CoinReceiverTest extends FlatSpec with Matchers {
     val coins = CoinReceiver() putCoin Quarter returnCoins
 
     coins should equal(Seq(Quarter))
+  }
+
+  it should "return the expected amount of quarters, dimes, and nickels that were placed in it" in {
+    val quarters = for (q <- 1 to nextInt(10)) yield Quarter
+    val dimes = for (d <- 1 to nextInt(10)) yield Dime
+    val nickels = for (d <- 1 to nextInt(10)) yield Nickel
+
+    val expectedCoins = quarters ++ dimes ++ nickels
+
+    val loadedReceiver = loadReceiver(expectedCoins)
+
+    val coins = loadedReceiver returnCoins
+
+    coins should equal(expectedCoins)
+  }
+
+  private def loadReceiver(coins: Seq[Coin]) = {
+    coins.foldLeft(CoinReceiver()) {
+      (receiver, coin) => receiver.putCoin(coin)
+    }
   }
 }

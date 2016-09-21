@@ -4,11 +4,12 @@ import com.github.riojack.domain.Coin
 import com.github.riojack.domain._
 
 case class CoinReceiver(pennies: Int = 0, nickels: Int = 0, dimes: Int = 0, quarters: Int = 0) {
-  def returnCoins = (dimes, nickels, quarters) match {
-    case (1, _, _) => Dime :: Nil
-    case (_, 1, _) => Nickel :: Nil
-    case (_, _, 1) => Quarter :: Nil
-    case _ => Seq()
+  def returnCoins = {
+    val quarterCoins = Seq.fill(quarters) { Quarter }
+    val dimeCoins = Seq.fill(dimes) { Dime }
+    val nickelCoins = Seq.fill(nickels) { Nickel }
+
+    quarterCoins ++ dimeCoins ++ nickelCoins
   }
 
   def putCoin(coin: Coin) = coin match {
