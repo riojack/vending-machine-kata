@@ -4,8 +4,8 @@ import com.github.riojack.domain._
 
 object ProductDispenser {
   def dispense(productName: String) = productName match {
-    case "chips" => Chips
-    case "candy" => Candy
-    case _ => Cola
+    case "chips" => Some(Chips)
+    case "candy" => Some(Candy)
+    case _ => Some(Cola)
   }
 }
