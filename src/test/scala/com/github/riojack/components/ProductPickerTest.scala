@@ -15,4 +15,14 @@ class ProductPickerTest extends FlatSpec with Matchers with BeforeAndAfter {
 
     product should be(None)
   }
+
+  it should "return nothing if there is inventory but the product is not recognized" in {
+    implicit val inventory = ProductInventory(1, 1, 1)
+    val picker = new ProductPicker()
+
+    val productName = alphanumeric.take(10).mkString
+    val product = picker.giveMe(productName)
+
+    product should be(None)
+  }
 }
