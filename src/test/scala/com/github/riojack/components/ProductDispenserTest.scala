@@ -18,4 +18,10 @@ class ProductDispenserTest extends FlatSpec with Matchers {
 
     ProductDispenser.dispense(productName) should equal(Chips)
   }
+
+  it should """dispense candy when "candy" is selected""" in {
+    val productName = "candy"
+
+    ProductDispenser.dispense(productName) should equal(Candy)
+  }
 }
