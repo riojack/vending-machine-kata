@@ -78,4 +78,16 @@ class ProductPickerTest extends FlatSpec with Matchers {
     product should be(Some(Candy))
   }
 
+  it should "return nothing if all the candy has been dispense and candy is requested again" in {
+    val inventory = ProductInventory(candy = 3)
+    val picker = new ProductPicker(inventory)
+
+    picker.giveMe("candy")
+    picker.giveMe("candy")
+    picker.giveMe("candy")
+    val product = picker.giveMe("candy")
+
+    product should be(None)
+  }
+
 }
