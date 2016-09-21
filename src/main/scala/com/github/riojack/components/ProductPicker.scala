@@ -13,6 +13,7 @@ class ProductPicker(startingInventory: ProductInventory) {
     case Some(Chips) if inventory.chips > 0 =>
       inventory = inventory.remove(Chips)
       Some(Chips)
+    case Some(Candy) => Some(Candy)
     case _ => None
   }
 }
