@@ -84,4 +84,10 @@ class CoinReceiverTest extends FlatSpec with Matchers {
 
     coins should equal(Seq(Nickel))
   }
+
+  it should "return one quarter if one quarter was placed in it" in {
+    val coins = CoinReceiver() putCoin Quarter returnCoins
+
+    coins should equal(Seq(Quarter))
+  }
 }
