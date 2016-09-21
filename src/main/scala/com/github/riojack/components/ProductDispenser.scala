@@ -6,6 +6,7 @@ object ProductDispenser {
   def dispense(productName: String) = productName match {
     case "chips" => Some(Chips)
     case "candy" => Some(Candy)
-    case _ => Some(Cola)
+    case "cola" => Some(Cola)
+    case _ => None
   }
 }
