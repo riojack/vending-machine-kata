@@ -5,4 +5,8 @@ package object domain {
   val Dime = Coin(2.268, 17.91)
   val Quarter = Coin(5.670, 24.26)
   val Penny = Coin(2.5, 19.05)
+
+  val Cola = Product("Chips", 100)
+  val Chips = Product("Cola", 50)
+  val Candy = Product("Candy", 65)
 }
