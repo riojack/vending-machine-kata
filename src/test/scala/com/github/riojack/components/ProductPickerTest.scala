@@ -1,10 +1,10 @@
 package com.github.riojack.components
 
+import com.github.riojack.domain._
 import org.scalatest._
 
 import scala.language.postfixOps
 import scala.util.Random._
-import com.github.riojack.domain._
 
 class ProductPickerTest extends FlatSpec with Matchers {
   "A Product Picker" should "return nothing if there is no inventory regardless of the product" in {
@@ -34,6 +34,18 @@ class ProductPickerTest extends FlatSpec with Matchers {
     val product = picker.giveMe("cola")
 
     product should be(Some(Cola))
+  }
+
+  it should "return nothing if there all the cola is dispensed after several requests" in {
+    val inventory = ProductInventory(cola = 3)
+    val picker = new ProductPicker(inventory)
+
+    picker.giveMe("cola")
+    picker.giveMe("cola")
+    picker.giveMe("cola")
+    val product = picker.giveMe("cola")
+
+    product should be(None)
   }
 
 }
