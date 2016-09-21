@@ -9,6 +9,8 @@ case class ProductInventory(cola: Int = 0, chips: Int = 0, candy: Int = 0) {
     case Cola => copy(cola = cola + 1)
     case _ => copy()
   }
+
+  def remove(product: Product): ProductInventory = new ProductInventory(cola = cola - 1)
 }
 
 object ProductInventory {

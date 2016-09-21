@@ -46,6 +46,12 @@ class ProductInventoryTest extends FlatSpec with Matchers {
     actualInventory should equal(expectedInventory)
   }
 
+  it should "remove Cola and decrement its cola inventory count by one" in {
+    val nextInventory = ProductInventory().add(Cola).add(Cola).add(Cola).remove(Cola)
+
+    nextInventory should equal(new ProductInventory(cola = 2))
+  }
+
   private def loadInventory(chips: Int, cola: Int, candy: Int) = {
     val withChips = (1 to chips).foldLeft(new ProductInventory()) {
       (inventory: ProductInventory, _) =>
