@@ -4,8 +4,9 @@ import com.github.riojack.domain.Coin
 import com.github.riojack.domain._
 
 case class CoinReceiver(pennies: Int = 0, nickels: Int = 0, dimes: Int = 0, quarters: Int = 0) {
-  def returnCoins: Seq[Coin] = dimes match {
-    case 1 => Dime :: Nil
+  def returnCoins = (dimes, nickels) match {
+    case (1, _) => Dime :: Nil
+    case (_, 1) => Nickel :: Nil
     case _ => Seq()
   }
 
